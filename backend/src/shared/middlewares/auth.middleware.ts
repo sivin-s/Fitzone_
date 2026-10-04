@@ -1,7 +1,7 @@
 import type { NextFunction } from "express";
-import type { AuthRequest } from "../../types/AuthRequest.types.js";
-import { asyncHandler } from "../handler/asyncHandler.handler.js";
-import type { ISessionService } from "../interfaces/ISessionService.interface.js";
+import type { AuthRequest } from "../../types/AuthRequest.types.ts";
+import { asyncHandler } from "../handler/asyncHandler.handler.ts";
+import type { ISessionService } from "../interfaces/ISessionService.interface.ts";
 
 
 const createAuthenticate = (sessions: ISessionService)=>{

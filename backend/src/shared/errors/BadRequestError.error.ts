@@ -1,5 +1,5 @@
-import { HTTPStatus } from "../enums/httpStatus.enum.js";
-import { AppError } from "./AppError.error.js";
+import { HTTPStatus } from "../enums/httpStatus.enum.ts";
+import { AppError } from "./AppError.error.ts";
 
 export class BadRequestError extends AppError{
     constructor(message="Bad Request"){

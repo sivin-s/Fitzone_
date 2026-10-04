@@ -1,3 +1,4 @@
+// only change the "types" while switching to db
 import type{
     Document,
     QueryFilter,
@@ -34,3 +35,4 @@ export interface IBaseRepository<T extends Document>{
      update(id: string, updateData: UpdateQuery<T>): Promise<T | null>;
      delete(id: string): Promise<boolean>
 }
+

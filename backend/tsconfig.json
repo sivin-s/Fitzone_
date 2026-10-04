@@ -6,8 +6,8 @@
     "moduleDetection": "force",
 
     /* modules */
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
 
     /* emit */
@@ -34,7 +34,10 @@
     /* Module Isolation */
     "isolatedModules":  true,
     "verbatimModuleSyntax": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "rewriteRelativeImportExtensions": true,
+    "allowImportingTsExtensions":true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

@@ -1,4 +1,4 @@
-import type { AuthPayload } from "../../types/AuthRequest.types.js";
+import type { AuthPayload } from "../../types/AuthRequest.types.ts";
 
 
 export type SessionKind = "user" | "admin";
