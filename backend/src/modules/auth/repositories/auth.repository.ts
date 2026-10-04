@@ -1,4 +1,4 @@
-import type {IUserProfileRepository} from "../../users/interfaces/IUserProfileRepository.interface";
+import type {IUserProfileRepository} from "../../users/interfaces/IUserProfileRepository.interface.ts";
 import User, {type IUser} from '../models/user.model.ts';
 
 // base repo
@@ -21,8 +21,8 @@ export class AuthRepository
        }
            
        // id in jwt
-       async findByIdWithPassword(id:string):Promise<IUser | null>{
-              return this.findOne({_id: id},"+password");
+       async findByIdWithPassword(userId:string):Promise<IUser | null>{
+              return this.findOne({_id: userId},"+password");
        }
 
       async updateVerificationStatus(

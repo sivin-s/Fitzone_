@@ -5,10 +5,8 @@ export interface IUserReader{
 }
 
 export interface IUserProfileRepository extends IUserReader{
-    findByIdWithPassword(id: string): Promise<IUser | null>;
-    updateProfile(id: string, data: Partial<IUser>) : Promise<IUser | null>;
-    updatePassword(id: string, data: Partial<IUser>): Promise<IUser | null>;
-    updateAvatar(id: string, data: Partial<IUser>): Promise<IUser | null>;
+    updateProfile(userId: string, data: Partial<IUser>) : Promise<IUser | null>;
+    updateAvatar(userId: string, profilePicture: string): Promise<IUser | null>;
 }
 
 

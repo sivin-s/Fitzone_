@@ -11,11 +11,13 @@ export interface IAuthRepository extends Pick<IBaseRepository<IUser>, "create" |
     isVerified: boolean
   ): Promise<IUser | null>;
   updatePassword(userId: string, newPassword: string):Promise<IUser | null>;
+  findByIdWithPassword(userId: string):Promise<IUser | null>;
 
   // google auth methods
   findByGoogleId(googleId:string):Promise<IUser | null>;
   linkGoogleId(userId: string, googleId: string): Promise<IUser | null>;
 
+  
 
 }
 
