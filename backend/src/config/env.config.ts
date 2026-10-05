@@ -27,6 +27,9 @@ const envSchema = z.object({
     SMTP_PASS: z.string(),
     SMTP_FROM_EMAIL: z.email(),
     SMTP_FROM_NAME: z.string(),
+    // Jwt
+    JWT_ACCESS_SECRET: z.string(),
+    JWT_REFRESH_SECRET: z.string(),
     // storage
     AWS_REGION: z.string(),
     AWS_ACCESS_KEY_ID: z.string(),

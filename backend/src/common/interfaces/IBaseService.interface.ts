@@ -5,7 +5,7 @@ import type{
     Document
 } from 'mongoose'
 
-
+// liskov substitution
 export interface IBaseService<T extends Document>{
     getById(id: string, selectFields?:string): Promise<T | null>;
     getOne(filter: QueryFilter<T>, selectFields?:string): Promise<T | null>;

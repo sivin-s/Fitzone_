@@ -5,9 +5,9 @@ import {logger} from "./logger.config.ts";
 export const connectDB = async ():Promise<void>=>{
     try{
         await mongoose.connect(env.MONGO_URI);
-         logger.info("✅ MongoDB connected");
+         console.info("✅ MongoDB connected");
     }catch (error: unknown) {
-    logger.error({ error }, "MongoDB connection failed");
+    console.error({ error }, "MongoDB connection failed");
     process.exit(1);
     }
 }

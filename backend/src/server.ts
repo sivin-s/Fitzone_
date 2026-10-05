@@ -20,9 +20,9 @@ const PORT = process.env.PORT || 8080;
 
 const startServer = async ()=>{
     connectDB().then(()=>{
-          app.listen(PORT, () => logger.info(`server started 🌐 ,${PORT}`));
+          app.listen(PORT, () => console.info(`server started 🌐 ,${PORT}`));
     }).catch((error: unknown)=>{
-        logger.error(
+        console.error(
             "server startup failed: " +
             (error instanceof Error ? error.message : String(error))
         );
