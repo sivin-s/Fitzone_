@@ -15,6 +15,7 @@ export interface IUser extends Document{
     profilePicture?: string;
     googleId?:string;
     gender?: Gender;
+    city?: string;
     phone?: string;
     pincode? : string;
     isPremium: boolean;

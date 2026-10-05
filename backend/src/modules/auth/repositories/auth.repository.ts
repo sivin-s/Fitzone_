@@ -1,4 +1,3 @@
-import type {IUserProfileRepository} from "../../users/interfaces/IUserProfileRepository.interface.ts";
 import User, {type IUser} from '../models/user.model.ts';
 
 // base repo
@@ -9,7 +8,7 @@ import type { IAuthRepository } from "../interfaces/IAuthRepository.interface.ts
 
 export class AuthRepository
        extends MongoBaseRepository<IUser>
-       implements IAuthRepository, IUserProfileRepository
+       implements IAuthRepository
 {
        constructor(){
               super(User)
