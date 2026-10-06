@@ -2,8 +2,9 @@ import type {Redis} from "ioredis";
 import crypto from "crypto";
 import type { IOtpService } from "../interfaces/IOtpService.interface";
 import { env } from "../../config/env.config";
+import {injectable} from 'inversify'
 
-
+@injectable()
 export class OtpService implements IOtpService{
     constructor(
         private store: Pick<Redis, "set" | "get" | "del">,
