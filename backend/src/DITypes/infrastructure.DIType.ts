@@ -1,4 +1,4 @@
-export const INFRA_TYPES={
+export const INFRA_TYPES={  // Infrastructure external tools and services like dbs, redis
     IOtpService: Symbol.for("IOtpService"),
     IEmailService: Symbol.for("IEmailService"),
     IJwtService: Symbol.for("IJwtService"),

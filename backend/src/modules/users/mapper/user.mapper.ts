@@ -34,7 +34,7 @@ export class UserMapper{
         }
     }
 
-    static toDtoList(users: IUser[]):IUserDto[]{
+    static toDtoList(users: IUser[]):IUserDto[]{   // bulk helper
         return users.map((user) => this.toDto(user))
     }
 
