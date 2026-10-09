@@ -4,6 +4,7 @@ import type { IEmailService } from "../interfaces/IEmailService.interface";
 import { logger } from "../../config/logger.config";
 import nodemailer from 'nodemailer';
 
+
 export class EmailService implements IEmailService{
     private _transporter: nodemailer.Transporter;
     constructor(){

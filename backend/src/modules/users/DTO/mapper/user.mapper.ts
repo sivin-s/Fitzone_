@@ -1,10 +1,10 @@
-import type { IUser } from "../../auth/models/user.model";
-import type { IUserDto } from "../DTO/user.dto";
+import type { IUser } from "../../../auth/models/user.model.ts";
+import type { IUserDto } from "../IUser.dto.ts";
 
 
 
 export class UserMapper{
-    static toAuthDto(user: IUser){
+    static toAuthDto(user: IUser){  // in
         return{
             id: user._id.toString(),
             username: user.username,
@@ -15,7 +15,7 @@ export class UserMapper{
     }
 
 
-    static toDto(user: IUser): IUserDto{
+    static toDto(user: IUser): IUserDto{ // out
         return{
             _id: user._id.toString(),
             username: user.username,

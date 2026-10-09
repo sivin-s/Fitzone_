@@ -56,22 +56,7 @@ export class AuthRepository
        )
       }
 
-      async updateProfile(
-       userId: string,
-       updateData : Partial<IUser>
-      ): Promise<IUser | null>{
-       return this.update(userId, updateData)
-      }
-
-      async updateAvatar(
-       userId: string,
-       profilePicture: string
-      ): Promise<IUser | null>{
-       return this.update(
-              userId,
-              {profilePicture}
-       )
-      }
+    
 
 
 }

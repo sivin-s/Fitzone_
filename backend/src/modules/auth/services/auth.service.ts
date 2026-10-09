@@ -10,7 +10,7 @@ import {inject, injectable} from 'inversify'
 import {AUTH_TYPES as TYPES} from '../../../DITypes/Index.DIType.ts'
 import { UnauthorizedError } from '../../../shared/errors/UnauthorizedError.error.ts';
 import { ConflictError } from '../../../shared/errors/ConflictError.error.ts';
-import { UserMapper } from '../../users/mapper/user.mapper.ts';
+import { UserMapper } from '../../users/DTO/mapper/user.mapper.ts';
 import type { IEmailService } from '../../../shared/interfaces/IEmailService.interface.ts';
 import { BadRequestError } from '../../../shared/errors/BadRequestError.error.ts';
 

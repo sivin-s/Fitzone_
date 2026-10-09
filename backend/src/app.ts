@@ -4,15 +4,15 @@ import cookiesParser from "cookie-parser";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
-// import authRoutes from "./modules"
-// import authRoutes from "./modules"
-// import userRoutes from "./modules"
+import authRoutes from "./modules/auth/routes/auth.route"
+import adminRoutes from "./modules/admin/routes/admin.route"
+import userRoutes from "./modules/users/routes/user.routes"
 
 import { env } from './config/env.config';
 
 // middleware
-// import {NotFoundErrorMiddleware} from "./shared"
-// import {errorMiddleware} from "./shared"
+import { notFoundMiddleware} from "./shared/middlewares/notFound.middleware"
+import {errorMiddleware} from "./shared/middlewares/error.middleware"
 
 const app:Application  = express();
 
