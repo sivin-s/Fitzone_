@@ -11,8 +11,77 @@ export const api = axios.create({
 })
 
 
+const refreshAuthLogic  = async ()=>{
+    const publicPaths = ['/', '/about', '/login', '/register', '/admin/login', '/forgot-password', '/verify-otp'];
+
+    if(publicPaths.includes(window.location.pathname)){
+        return Promise.reject(new Error("Skipping token refresh on public routes."));
+    }
+
+    try{
+        await axios.post('/api/v1/auth/refresh-token',{
+            session: window.location.pathname.startsWith('/admin') ? 'admin' : 'user'},{
+                withCredentials: true
+            }
+        )
+        return Promise.resolve(); // it mark as fulfilled;
+    }catch(error){
+        // check if the failure is because the account was blocked
+        const message: string = isAxiosError(error)
+             ? (error.response?.data?.message ?? '') : '';
+        
+        const isBlocked = message.toLowerCase().includes('blocked'); // boolean
+        console.warn("session expired. redirecting to login");
+        const loginPath = window.location.pathname.startsWith('/admin') ? '/admin/login' : '/login';
+        const params = new URLSearchParams({
+            returnTo: window.location.pathname + window.location.search + window.location.hash
+        })
+       if(isBlocked)  params.set('reason','blocked');
+       window.location.href = `${loginPath}?${params.toString()}`;
+       return Promise.reject(error);
+    }
+
+
+}
+
+createAuthRefreshInterceptor(api, refreshAuthLogic, {
+    shouldRefresh: (error)=> {
+        // trigger refresh only on 401 unauthorized.
+        if(error.response?.status !== 401){
+            return false;
+        }
+
+        const url = error.config?.url;
+        return !(
+            url?.includes('/auth/refresh-token') ||
+            url?.includes('/auth/login') ||
+            url?.includes('/auth/register') || 
+            url?.includes('/auth/google') || 
+            url?.includes('/auth/forgot-password') ||
+            url?.includes('/auth/reset-password') ||
+            url?.includes('/auth/verify-otp')
+        )
+    },
+})
 
 
 
+export function getApiErrorMessage(error: unknown, fallback:string):string{
+    if(isAxiosError(error)){  // isAxiosError()  return error if the error "come from request or response"
+        const message = error.response?.data?.message;
+        if(typeof message === "string"){
+            try{
+                const parsed = JSON.parse(message);
+                if(Array.isArray(parsed) && parsed.length > 0 && parsed[0]?.message){
+                        return parsed[0].message;
+                }
+            }catch(error){
+                return message;
+            }
+            return message
+        }
+    }
+    return fallback;
+}
 
 

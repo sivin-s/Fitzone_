@@ -1,0 +1,31 @@
+import {authService} from '../services/authService';
+import {useQuery} from '@tanstack/react-query';
+
+export const useAuth = ()=>{
+    const {data,isLoading,error} = useQuery({
+        queryKey: ['auth-user'],
+        queryFn: async ()=>{
+            const response = await authService.userMe();
+            return response.data.data; // {userId, role}
+        },
+        retry: false,
+        staleTime: 1000 * 60 * 5,
+        // only poll when already authenticated - prevents  401 loops on public pages (OTP, forgot-password etc..)
+        refetchInterval: (query)=> query.state.data ? 30 * 1000 : false    // polling for data
+    });
+    return{
+        user: data,
+        isAuthenticated: !!data,
+        isLoading,
+        isError: !!error
+    }
+}
+
+
+
+
+
+
+
+
+
